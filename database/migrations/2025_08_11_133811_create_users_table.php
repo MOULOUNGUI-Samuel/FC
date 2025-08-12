@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
+             $table->foreignUuid('agency_id')->nullable()->after('id')->constrained('agencies')->onDelete('set null');
+             $table->foreignUuid('utilisateur_id')->nullable()->after('id')->constrained('utilisateurs')->onDelete('set null');
             $table->string('name');
-            // J'ai ajouté l'index unique sur username, c'est important
-            $table->string('username')->unique()->nullable(); 
+            $table->string('username')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone_number')->unique()->nullable();
              $table->foreignUuid('role_id')->nullable()->constrained()->onDelete('set null');
@@ -35,7 +36,6 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary(); // Le champ 'id' de la session est un string, pas un UUID. C'est correct.
-            
             // =======================================================
             //                  LA CORRECTION EST ICI
             // =======================================================

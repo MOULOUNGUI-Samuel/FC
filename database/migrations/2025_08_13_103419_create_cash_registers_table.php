@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-         Schema::create('accounts', function (Blueprint $table) {
+       Schema::create('cash_registers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('account_number')->unique();
             $table->string('name');
-            $table->enum('type', ['Principal', 'Epargne', 'Projet', 'Autre'])->default('Principal');
-            $table->foreignUuid('parent_account_id')->nullable()->constrained('accounts')->onDelete('set null');
-            $table->decimal('ceiling', 15, 2)->nullable();
-            $table->enum('status', ['Actif', 'Bloque', 'Cloture'])->default('Actif');
+            $table->enum('type', ['Physique', 'MobileMoney', 'Bancaire']);
             $table->decimal('balance', 15, 2)->default(0.00);
+            $table->decimal('min_threshold', 15, 2)->nullable();
+            $table->decimal('max_threshold', 15, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('cash_registers');
     }
 };

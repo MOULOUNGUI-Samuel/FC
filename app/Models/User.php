@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Concerns\HasUuids; // <-- Importez le trait
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
-    // On utilise les deux traits
-    use HasFactory, Notifiable, HasUuids;
+    use 
+    // HasApiTokens,
+     HasFactory,
+      Notifiable, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -19,15 +22,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'agency_id',
-        'role_id',
-        'name',
+        'user_type',
+        'first_name',
+        'last_name',
         'username',
+        'profession',
+        'date_of_birth',
+        'gender',
         'email',
         'phone_number',
-        'google_id',
-        'facebook_id', // Ajout de l'ID Facebook
+        'secondary_phone_number',
+        'country',
+        'city',
+        'address',
+        'id_card_number',
+        'ifu_number',
+        'rccm_number',
         'password',
+        'google_id',
+        'is_active',
+        'role_id',
     ];
 
     /**
@@ -41,23 +55,22 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'date_of_birth' => 'date',
+        'is_active' => 'boolean',
+    ];
+    
+    /**
+     * Get the user's role.
+     */
+    public function role(): BelongsTo
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-      public function role()
-    {
-        return $this->belongsTo(Role::class, 'role_id');
-    }
-      public function agency()
-    {
-        return $this->belongsTo(Agency::class, 'agency_id');
+        return $this->belongsTo(Role::class);
     }
 }

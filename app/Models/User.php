@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
-    use 
-    // HasApiTokens,
-     HasFactory,
-      Notifiable, HasUuids;
+    use
+        // HasApiTokens,
+        HasFactory,
+        Notifiable,
+        HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -22,27 +23,28 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_type',
-        'first_name',
-        'last_name',
-        'username',
+        'type_utilisateur',
+        'prenom',
+        'nom',
+        'nom_utilisateur',
         'profession',
-        'date_of_birth',
-        'gender',
+        'date_naissance',
+        'genre',
         'email',
-        'phone_number',
-        'secondary_phone_number',
-        'country',
-        'city',
-        'address',
-        'id_card_number',
-        'ifu_number',
-        'rccm_number',
+        'numero_telephone',
+        'numero_telephone_secondaire',
+        'pays',
+        'ville',
+        'adresse',
+        'numero_carte_identite',
+        'numero_ifu',
+        'numero_rccm',
         'password',
         'google_id',
-        'is_active',
+        'est_actif',
         'role_id',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -60,12 +62,13 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verifie_le' => 'datetime',
         'password' => 'hashed',
-        'date_of_birth' => 'date',
-        'is_active' => 'boolean',
+        'date_naissance' => 'date',
+        'est_actif' => 'boolean',
     ];
-    
+
+
     /**
      * Get the user's role.
      */

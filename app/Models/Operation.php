@@ -10,8 +10,28 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Operation extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['user_id', 'cash_register_session_id', 'type', 'amount', 'description', 'source_account_id', 'source_cash_register_id', 'destination_account_id', 'destination_cash_register_id', 'related_loan_id', 'status', 'cancellation_user_id', 'cancellation_time', 'operation_date'];
-    protected $casts = ['operation_date' => 'datetime', 'cancellation_time' => 'datetime'];
+    protected $fillable = [
+    'user_id',
+    'cash_register_session_id',
+    'type',
+    'montant',
+    'description',
+    'source_account_id',
+    'source_cash_register_id',
+    'destination_account_id',
+    'destination_cash_register_id',
+    'related_loan_id',
+    'statut',
+    'cancellation_user_id',
+    'heure_annulation',
+    'date_operation'
+];
+
+protected $casts = [
+    'date_operation' => 'datetime',
+    'heure_annulation' => 'datetime'
+];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

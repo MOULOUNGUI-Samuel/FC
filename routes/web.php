@@ -8,22 +8,15 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CaissesController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ServicesController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 // routes/web.php
 Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
 Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback'])->name('socialite.callback');
-// // Route pour rediriger vers Google
-// Route::get('/auth/google/redirect', [SocialiteController::class, 'redirect'])->name('google.redirect');
-// // Route que Google appellera après authentification
-// Route::get('/auth/google/callback', [SocialiteController::class, 'callback'])->name('google.callback');
-
-// // --- Facebook Routes (nouvelles) ---
-// Route::get('/auth/facebook/redirect', [SocialiteController::class, 'redirect'])->name('facebook.redirect');
-// Route::get('/auth/facebook/callback', [SocialiteController::class, 'callback'])->name('facebook.callback');
 
 // --- Routes pour la vérification OTP ---
 Route::post('/verifi-numero', [VerifyOTPController::class, 'verifiNumero'])->name('verifi-numero');
@@ -40,9 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    Route::get('/caisses', [CaissesController::class, 'index'])->name('caisse.index');
-    Route::get('/branches', [BranchesController::class, 'index'])->name('branche.index');
-    Route::get('/services', [ServicesController::class, 'index'])->name('service.index');
+    
+    Route::get('/clients', [ClientController::class, 'index'])->name('client.index');
     
 });
 

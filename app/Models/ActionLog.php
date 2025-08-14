@@ -11,7 +11,13 @@ class ActionLog extends Model
 {
     use HasFactory, HasUuids;
     const UPDATED_AT = null;
-    protected $fillable = ['user_id', 'action', 'details', 'ip_address'];
+    protected $fillable = [
+    'user_id',
+    'action',
+    'details',
+    'adresse_ip'
+];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

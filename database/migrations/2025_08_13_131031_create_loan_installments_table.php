@@ -9,17 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {
+    public function up(): void
+    {
         Schema::create('loan_installments', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('loan_id')->constrained('loans')->onDelete('cascade');
-            $table->date('due_date');
-            $table->decimal('principal_amount', 15, 2);
-            $table->decimal('interest_amount', 15, 2);
-            $table->decimal('total_amount', 15, 2);
-            $table->enum('status', ['A_Payer', 'Payee', 'En_Retard', 'Payee_Partiel'])->default('A_Payer');
-            $table->decimal('paid_amount', 15, 2)->default(0.00);
-            $table->dateTime('payment_date')->nullable();
+            $table->date('date_echeance');
+            $table->decimal('montant_principal', 15, 2);
+            $table->decimal('montant_interet', 15, 2);
+            $table->decimal('montant_total', 15, 2);
+            $table->enum('statut', ['A_Payer', 'Payee', 'En_Retard', 'Payee_Partiel'])->default('A_Payer');
+            $table->decimal('montant_paye', 15, 2)->default(0.00);
+            $table->dateTime('date_paiement')->nullable();
             $table->timestamps();
         });
     }

@@ -10,8 +10,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class LoanInstallment extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['loan_id', 'due_date', 'principal_amount', 'interest_amount', 'total_amount', 'status', 'paid_amount', 'payment_date'];
-    protected $casts = ['due_date' => 'date', 'payment_date' => 'datetime'];
+    protected $fillable = [
+        'debtor_account_id',
+        'numero_pret',
+        'montant_accorde',
+        'taux_interet_annuel',
+        'date_demande',
+        'date_approbation',
+        'date_decaissement',
+        'duree_en_mois',
+        'statut'
+    ];
+
+    protected $casts = [
+        'date_demande' => 'date',
+        'date_approbation' => 'date',
+        'date_decaissement' => 'date'
+    ];
+
     public function loan(): BelongsTo
     {
         return $this->belongsTo(Loan::class);

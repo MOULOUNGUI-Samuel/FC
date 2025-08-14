@@ -10,7 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CashRegister extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['user_id', 'name', 'type', 'balance', 'min_threshold', 'max_threshold'];
+   protected $fillable = [
+    'user_id',
+    'nom',
+    'type',
+    'solde',
+    'seuil_min',
+    'seuil_max'
+];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

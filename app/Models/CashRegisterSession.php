@@ -12,8 +12,24 @@ class CashRegisterSession extends Model
 {
     //
     use HasFactory, HasUuids;
-    protected $fillable = ['cash_register_id', 'opening_user_id', 'opening_time', 'initial_balance', 'closing_user_id', 'closing_time', 'theorical_final_balance', 'real_final_balance', 'difference', 'justification'];
-    protected $casts = ['opening_time' => 'datetime', 'closing_time' => 'datetime'];
+    protected $fillable = [
+    'cash_register_id',
+    'opening_user_id',
+    'heure_ouverture',
+    'solde_initial',
+    'closing_user_id',
+    'heure_fermeture',
+    'solde_final_theorique',
+    'solde_final_reel',
+    'difference',
+    'justification'
+];
+
+protected $casts = [
+    'heure_ouverture' => 'datetime',
+    'heure_fermeture' => 'datetime'
+];
+
     public function cashRegister(): BelongsTo
     {
         return $this->belongsTo(CashRegister::class);

@@ -11,8 +11,24 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Loan extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['debtor_account_id', 'loan_number', 'amount_granted', 'annual_interest_rate', 'request_date', 'approval_date', 'disbursement_date', 'duration_in_months', 'status'];
-    protected $casts = ['request_date' => 'date', 'approval_date' => 'date', 'disbursement_date' => 'date'];
+   protected $fillable = [
+    'debtor_account_id',
+    'numero_pret',
+    'montant_accorde',
+    'taux_interet_annuel',
+    'date_demande',
+    'date_approbation',
+    'date_decaissement',
+    'duree_en_mois',
+    'statut'
+];
+
+protected $casts = [
+    'date_demande' => 'date',
+    'date_approbation' => 'date',
+    'date_decaissement' => 'date'
+];
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class, 'debtor_account_id');

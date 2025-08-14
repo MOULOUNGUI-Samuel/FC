@@ -5,11 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="GFA-GA - Gestion des  - ">
-    <meta name="keywords" content="GFA-GA, Gestion des , , Espace Proprietaire">
-    <meta name="author" content="GFA-GA Team">
+    <meta name="description" content="Le logiciel FCI est une solution intégrée conçue pour répondre aux besoins opérationnels et stratégiques
+d’un établissement de microfinance moderne">
+    <meta name="keywords" content="Logiciel de Gestion FCI">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <!--plugins-->
@@ -25,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
-    <title>GFA-GA</title>
+    <title>FCI</title>
 </head>
 
 <body class="">
@@ -37,7 +36,7 @@
 
                     <div
                         class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
-                        <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
+                        <div class="card shadow-none bg-transparent rounded-0 mb-0">
                             <div class="card-body">
                                 <img src="{{ asset('assets/images/login-images/login-cover.svg') }}"
                                     class="img-fluid auth-img-cover-login" width="650" alt="" />
@@ -50,12 +49,12 @@
                             <div class="card-body p-sm-5">
                                 <div class="">
                                     <div class="mb-3 text-center">
-                                        <img src="{{ asset('assets/images/logo-icon.png') }}" width="60"
+                                        <img src="{{ asset('assets/images/icon2.png') }}" width="100"
                                             alt="">
                                     </div>
                                     <div class="text-center mb-4">
-                                        <h5 class="">Espace Proprietaire</h5>
-                                        <p class="mb-0">Veuillez vous connecter à votre compte</p>
+                                        <h5 class="">FOND COMMUN D'INVESTISSEMENT</h5>
+                                        <p class="mb-0">Veuillez vous Identifier !</p>
                                     </div>
                                     <div class="form-body">
                                         @if ($errors->any())
@@ -81,11 +80,6 @@
                                         <form method="POST" {{ route('login') }} class="row g-3 app-form needs-validation" novalidate
                                                 onsubmit="return validateForm(event)">
                                                 @csrf
-                                            <div class="col-12">
-                                                <label for="inputCode" class="form-label">Code structure</label>
-                                                <input type="text" class="form-control shadow-sm" id="inputCode"
-                                                    placeholder="Entrez votre code structure" name="code" required>
-                                            </div>
                                             <div class="col-12">
                                                 <label for="inputidentifiant" class="form-label">Identifiant</label>
                                                 <input type="text" class="form-control shadow-sm" id="inputidentifiant"

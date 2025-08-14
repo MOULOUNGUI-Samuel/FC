@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('cash_registers', function (Blueprint $table) {
+        Schema::create('cash_registers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('name');
+            $table->string('nom');
             $table->enum('type', ['Physique', 'MobileMoney', 'Bancaire']);
-            $table->decimal('balance', 15, 2)->default(0.00);
-            $table->decimal('min_threshold', 15, 2)->nullable();
-            $table->decimal('max_threshold', 15, 2)->nullable();
+            $table->decimal('solde', 15, 2)->default(0.00);
+            $table->decimal('seuil_min', 15, 2)->nullable();
+            $table->decimal('seuil_max', 15, 2)->nullable();
             $table->timestamps();
         });
     }

@@ -11,7 +11,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Account extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ['user_id', 'account_number', 'name', 'type', 'parent_account_id', 'ceiling', 'status', 'balance'];
+    protected $fillable = [
+    'user_id',
+    'numero_compte',
+    'nom',
+    'type',
+    'parent_account_id',
+    'plafond',
+    'statut',
+    'solde'
+];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -1,160 +1,200 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags  -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Le logiciel FCI est une solution intégrée conçue pour répondre aux besoins opérationnels et stratégiques
-d’un établissement de microfinance moderne">
-    <meta name="keywords" content="Logiciel de Gestion FCI">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
-    <!--plugins-->
-    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-    <!-- loader-->
-    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <title>FCI</title>
+    <link rel="icon" type="image/png" href="{{ asset('_assets/images/icon1.png') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100;400;500;600&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --adminuiux-content-font: 'Roboto';
+            --adminuiux-content-font-weight: 400;
+            --adminuiux-title-font: "Fira Sans Condensed";
+            --adminuiux-title-font-weight: 500;
+        }
+    </style>
+
+    <script defer src="{{ asset('assets/js/appced1.js?7e4316178ad989670ad8') }}"></script>
+    <link href="{{ asset('assets/css/appced1.css?7e4316178ad989670ad8') }}" rel="stylesheet">
+</head>
+<script defer src="{{ 'assets/js/appced1.js?7e4316178ad989670ad8' }}"></script>
+<link href="{{ 'assets/css/appced1.css?7e4316178ad989670ad8' }}" rel="stylesheet">
 </head>
 
-<body class="">
-    <!--wrapper-->
-    <div class="wrapper">
-        <div class="section-authentication-cover">
-            <div class="">
-                <div class="row g-0">
+<body
+    class="main-bg main-bg-opac main-bg-blur adminuiux-sidebar-fill-white adminuiux-sidebar-boxed theme-blue roundedui"
+    data-theme="theme-blue" data-sidebarfill="adminuiux-sidebar-fill-white" data-bs-spy="scroll"
+    data-bs-target="#list-example" data-bs-smooth-scroll="true" tabindex="0">
+    <!-- Pageloader -->
+    <div class="pageloader">
+        <div class="container h-100">
+            <div class="row justify-content-center align-items-center text-center h-100">
+                <div class="col-12 mb-auto pt-4"></div>
+                <div class="col-auto">
+                    <img src="{{ asset('_assets/images/icon2.png') }}" alt="" class="height-60 mb-3">
+                    <div class="loader10 mb-2 mx-auto"></div>
+                </div>
+                <div class="col-12 mt-auto pb-4">
+                    <p class="text-secondary">Chargement...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <div
-                        class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
-                        <div class="card shadow-none bg-transparent rounded-0 mb-0">
-                            <div class="card-body">
-                                <img src="{{ asset('assets/images/login-images/login-cover.svg') }}"
-                                    class="img-fluid auth-img-cover-login" width="650" alt="" />
+    <main class="flex-shrink-0 pt-0 h-100">
+        <div class="container-fluid">
+            <div class="auth-wrapper">
+
+                <!-- login wrap -->
+                <div class="row gx-3">
+                    <div class="col-12 col-md-6 col-xl-8 p-4 d-none d-md-block">
+                        <div class="card adminuiux-card bg-theme-1-space position-relative overflow-hidden h-100">
+                            <div class="position-absolute start-0 top-0 h-100 w-100 coverimg  z-index-0">
+                                <img src="{{ asset('_assets/images/6196859.jpg') }}" alt="">
                             </div>
+                            {{-- <div class="card-body position-relative z-index-1">
+                                <div
+                                    class="row h-100 d-flex flex-column justify-content-center align-items-center gx-0 text-center">
+                                    <div class="col-10 col-md-11 col-xl-8 mb-4 mx-auto">
+                                        <div class="swiper swipernavpagination pb-5">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <h3 class="text-white mb-3">Le logiciel FCI est une solution
+                                                        intégrée conçue pour répondre aux besoins opérationnels et
+                                                        stratégiques
+                                                        d’un établissement de microfinance moderne</h3>
+                                                    <p class="lead opacity-75">Simplicité d’utilisation, sécurité
+                                                        renforcée et
+                                                        puissance fonctionnelle</p>
+                                                </div>
+                                            </div>
+                                            <div class="swiper-pagination white bottom-0"></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div> --}}
                         </div>
                     </div>
+                    <div class="col-12 col-md-6 col-xl-4 minvheight-100 d-flex flex-column px-0">
+                        <!-- standard header -->
+                        <header class="adminuiux-header">
+                            <!-- Fixed navbar -->
+                            <nav class="navbar">
+                                {{-- <div class="container-fluid">
+                                    <!-- logo -->
+                                    <a class="navbar-brand" href="{{route('login')}}">
+                                        <img data-bs-img="light" src="{{ asset('_assets/images/icon2.png') }}" alt="">
+                                        
+                                    </a>
 
-                    <div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
-                        <div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
-                            <div class="card-body p-sm-5">
-                                <div class="">
-                                    <div class="mb-3 text-center">
-                                        <img src="{{ asset('assets/images/icon2.png') }}" width="100"
-                                            alt="">
+                                    <div class=" ms-auto "></div>
+                                    <!-- right icons button -->
+                                    <div class="ms-auto">
                                     </div>
-                                    <div class="text-center mb-4">
-                                        <h5 class="">FOND COMMUN D'INVESTISSEMENT</h5>
-                                        <p class="mb-0">Veuillez vous Identifier !</p>
-                                    </div>
-                                    <div class="form-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-light-border-danger d-flex align-items-center justify-content-between"
-                                                role="alert">
-                                                <p class="mb-0 text-danger">
-                                                    <i class="ti ti-alert-circle f-s-18 me-2"></i>
-                                                    {{ $errors->first() }}
-                                                </p>
-                                                <i class="ti ti-x" data-bs-dismiss="alert"></i>
-                                            </div>
-                                        @endif
-                                        @if (session('success'))
-                                            <div
-                                                class="alert alert-light-border-success d-flex align-items-center justify-content-between">
-                                                <p class="mb-0 text-success">
-                                                    <i class="ti ti-circle-check f-s-18 me-2"></i>
-                                                    {{ session('success') }}
-                                                </p>
-                                                <i class="ti ti-x" data-bs-dismiss="alert"></i>
-                                            </div>
-                                        @endif
-                                        <form method="POST" {{ route('login') }} class="row g-3 app-form needs-validation" novalidate
-                                                onsubmit="return validateForm(event)">
-                                                @csrf
-                                            <div class="col-12">
-                                                <label for="inputidentifiant" class="form-label">Identifiant</label>
-                                                <input type="text" class="form-control shadow-sm" id="inputidentifiant"
-                                                    placeholder="Entrez votre identifiant" name="email" required>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Mot de passe</label>
-                                                <div class="input-group" id="show_hide_password">
-                                                    <input type="password" class="form-control border-end-0  shadow-sm"
-                                                        id="inputChoosePassword" placeholder="Votre mot de passe" name="password" required> <a
-                                                        href="javascript:;" class="input-group-text bg-transparent shadow-sm"><i
-                                                            class="bx bx-hide"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckChecked">
-                                                    <label class="form-check-label" for="flexSwitchCheckChecked">Se
-                                                        souvenir de moi</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 text-end"> <a
-                                                    href="authentication-forgot-password.html">Mot de passe oublié ?</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary shadow-sm" id="submitBtn"
-                                                        onclick="handleSubmit(event)">Se connecter</button>
-                                                    <button type="button" id="btnLoading"
-                                                        class="btn btn-dark w-100 fw-bold d-none" disabled>
-                                                        <span class="spinner-border spinner-border-sm me-2"
-                                                            role="status" aria-hidden="true"></span>
-                                                        Connexion en cours...
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="text-center ">
-                                                    <p class="mb-0">Vous n'avez pas encore de compte ? <a
-                                                            href="{{ route('register') }}">Inscrivez-vous ici.</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    {{-- <div class="login-separater text-center mb-5"> <span>OR SIGN IN WITH</span>
-                                        <hr>
-                                    </div>
-                                    <div class="list-inline contacts-social text-center">
-                                        <a href="javascript:;" class="list-inline-item bg-facebook text-white border-0 rounded-3"><i class="bx bxl-facebook"></i></a>
-                                        <a href="javascript:;" class="list-inline-item bg-twitter text-white border-0 rounded-3"><i class="bx bxl-twitter"></i></a>
-                                        <a href="javascript:;" class="list-inline-item bg-google text-white border-0 rounded-3"><i class="bx bxl-google"></i></a>
-                                        <a href="javascript:;" class="list-inline-item bg-linkedin text-white border-0 rounded-3"><i class="bx bxl-linkedin"></i></a>
-                                    </div> --}}
+                                </div> --}}
+                            </nav>
+                        </header>
+                        <div class="h-100 px-2 py-3">
 
+                            <div class="row gx-3 h-100 align-items-center justify-content-center mt-md-3">
+                                
+                                <div class="col-12 col-sm-8 col-md-11 col-xl-11 col-xxl-10 login-box">
+                                    <form method="POST" {{ route('login') }} class="row g-3 app-form needs-validation"
+                                        novalidate onsubmit="return validateForm(event)">
+                                        @csrf
+                                        <div class="text-center mb-5">
+                                            <img data-bs-img="light" src="{{ asset('_assets/images/icon2.png') }}"
+                                                alt="" class="w-50">
+                                        </div>
+                                        <div class="text-center mb-3">
+                                            <h1 class="mb-2">Bienvenue&#9996;</h1>
+                                            <p class="text-secondary">Entrez vos identifiants pour vous connecter</p>
+                                        </div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <p class="mb-0 text-danger">
+                                                <i class="ti ti-alert-circle f-s-18 me-2"></i>
+                                                {{ $errors->first() }}
+                                            </p>
+                                            <i class="ti ti-x" data-bs-dismiss="alert"></i>
+                                        </div>
+                                    @endif
+                                    @if (session('success'))
+                                        <div class="alert alert-success" role="alert">
+                                            <p class="mb-0 text-success">
+                                                <i class="ti ti-circle-check f-s-18 me-2"></i>
+                                                {{ session('success') }}
+                                            </p>
+                                            <i class="ti ti-x" data-bs-dismiss="alert"></i>
+                                        </div>
+                                    @endif
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="emailadd"
+                                                placeholder="Votre indentifiant" autofocus="" name="email">
+                                            <label for="emailadd" style="margin-left: 10px">Identifiant</label>
+                                        </div>
+
+                                        <div class="position-relative" id="show_hide_password">
+                                            <div class="form-floating mb-3">
+                                                <input type="password" class="form-control" id="passwd"
+                                                    placeholder="Votre mot de passe" name="password">
+                                                <label for="passwd">Mot de passe</label>
+                                            </div>
+                                            <a href="javascript:;"
+                                                class="btn btn-square btn-link text-theme-1 position-absolute end-0 top-0 mt-2 me-2 ">
+                                                <i class="bx bx-hide fs-22"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="row gx-3 align-items-center mb-3">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="rememberme"
+                                                        id="rememberme">
+                                                    <label class="form-check-label" for="rememberme">Souviens-toi de
+                                                        moi</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="investment-forgot-password.html" class=" ">Mot de passe
+                                                    oublié ?</a>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-lg btn-theme w-100 mb-3" id="submitBtn"
+                                            onclick="handleSubmit(event)">Se
+                                            connecter</button>
+                                        <button type="submit" class="btn btn-lg btn-theme w-100 mb-3 d-none" disabled
+                                            id="btnLoading">
+                                            <span class="spinner-border spinner-border-sm me-2" role="status"
+                                                aria-hidden="true"></span>
+                                            Connexion...</button>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <!--end row-->
+
             </div>
         </div>
-    </div>
-    <!--end wrapper-->
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--plugins-->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <!--Password show & hide js -->
+    </main>
+    <!-- Page Level js -->
+    <script src="{{ asset('assets/js/investment/investment-auth.js') }}"></script>
     <script>
         $(document).ready(function() {
             $("#show_hide_password a").on('click', function(event) {
@@ -196,8 +236,5 @@ d’un établissement de microfinance moderne">
             return true;
         }
     </script>
-    <!--app JS-->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
-
 </html>

@@ -1,285 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Jul 2025 22:52:56 GMT -->
-
 <head>
-    <!-- Required meta tags -->
+    <!-- Required meta tags  -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="{{ asset('assets/images/icon2.png') }}" type="image/png" />
-    <!--plugins-->
-    <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-    <!-- loader-->
-    <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('assets/js/pace.min.js') }}"></script>
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
-    <!-- Theme Style CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/dark-theme.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/semi-dark.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
-    <title>
-		@yield('title', 'Mon Tableau de bord')
-	</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>FCI</title>
+    <link rel="icon" type="image/png" href="{{ asset('_assets/images/icon1.png') }}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@100;400;500;600&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --adminuiux-content-font: 'Roboto';
+            --adminuiux-content-font-weight: 400;
+            --adminuiux-title-font: "Fira Sans Condensed";
+            --adminuiux-title-font-weight: 500;
+        }
+    </style>
+
+    <script defer src="{{ asset('assets/js/appced1.js?7e4316178ad989670ad8') }}"></script>
+    <link href="{{ asset('assets/css/appced1.css?7e4316178ad989670ad8') }}" rel="stylesheet">
 </head>
 
-<body>
-    <!--wrapper-->
-    <div class="wrapper">
-        <!--sidebar wrapper -->
-        <div class="sidebar-wrapper" data-simplebar="true">
-            <!-- MODIFIÉ : Logo et nom de l'application -->
-            <div class="sidebar-header">
-                <div>
-                    <img src="assets/images/icon2.png" class="logo-icon" alt="logo icon">
+<body
+    class="main-bg main-bg-opac main-bg-blur adminuiux-sidebar-fill-white adminuiux-sidebar-boxed theme-blue roundedui"
+    data-theme="theme-blue" data-sidebarfill="adminuiux-sidebar-fill-white" data-bs-spy="scroll"
+    data-bs-target="#list-example" data-bs-smooth-scroll="true" tabindex="0">
+    <!-- Pageloader -->
+    <div class="pageloader">
+        <div class="container h-100">
+            <div class="row justify-content-center align-items-center text-center h-100">
+                <div class="col-12 mb-auto pt-4"></div>
+                <div class="col-auto">
+                    <img src="{{ asset('_assets/images/icon2.png') }}" alt="" class="height-60 mb-3">
+                    <div class="loader10 mb-2 mx-auto"></div>
                 </div>
-                <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
+                <div class="col-12 mt-auto pb-4">
+                    <p class="text-secondary">Chargement...</p>
                 </div>
             </div>
-
-            <!--navigation-->
-            <ul class="metismenu" id="menu">
-
-                <!-- Tableau de Bord (lien principal) -->
-                <li class="@if (request()->routeIs('dashboard')) active @endif">
-                    <a href="{{ route('dashboard') }}">
-                        <div class="parent-icon"><i class='bx bx-home-alt'></i></div>
-                        <div class="menu-title">Tableau de Bord</div>
-                    </a>
-                </li>
-
-                <li class="menu-label">ESPACE CLIENT</li>
-                <!-- Gestion des Clients -->
-                <li class="active">
-                    <a href="{{route('client.index')}}" class="active">
-                        <div class="parent-icon"><i class='bx bx-user-voice'></i></div>
-                        <div class="menu-title">Clients</div>
-                    </a>
-                </li>
-
-                <li class="menu-label">ESPACE TRESORERIE</li>
-
-                <li class="#">
-                    <a href="#">
-                        <div class="parent-icon"><i class="bx bx-wallet"></i></div>
-                        <div class="menu-title">Trésorerie</div>
-                    </a>
-                </li>
-                <li class="menu-label">ESPACE SYNTHESE</li>
-
-                <!-- Rapports -->
-                <li>
-                    <a href="#">
-                        <div class="parent-icon"><i class="bx bx-list-ul"></i></div>
-                        <div class="menu-title">Synthèse</div>
-                    </a>
-                </li>
-				<li class="menu-label">UTILISATEURS</li>
-                <!-- Gestion des Clients -->
-                <li>
-                    <a href="#">
-                        <div class="parent-icon"><i class="bx bx-user-circle"></i></div>
-                        <div class="menu-title">Utilisateurs</div>
-                    </a>
-                </li>
-            </ul>
-            <!--end navigation-->
         </div>
-        
-        <header>
-			<div class="topbar d-flex align-items-center">
-				<nav class="navbar navbar-expand gap-3">
-					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-					</div>
-					  <div class="top-menu ms-auto">
-						<ul class="navbar-nav align-items-center gap-1">
-							<li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
-								<a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="user-box dropdown px-3">
-						<a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
-							<div class="user-info">
-								<p class="user-name mb-0">Pauline Seitz</p>
-								<p class="designattion mb-0">Web Designer</p>
-							</div>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
-							</li>
-							<li>
-								<div class="dropdown-divider mb-0"></div>
-							</li>
-							<li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</header>
-        <!--end header -->
-        <!--start page wrapper -->
+    </div>
+    <!-- standard header -->
+    <header class="adminuiux-header">
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+
+                <!-- main sidebar toggle -->
+                <button class="btn btn-link btn-square sidebar-toggler" type="button" onclick="initSidebar()">
+                    <i class="sidebar-svg" data-feather="menu"></i>
+                </button>
+
+                <!-- logo -->
+                <a class="navbar-brand" href="investment-dashboard.html">
+                    <img data-bs-img="light" src="{{ asset('_assets/images/icon2.png') }}" alt="">
+                    <img data-bs-img="dark" src="{{ asset('_assets/images/icon2.png') }}" alt="">
+                </a>
+
+                <!-- right icons button -->
+                <div class="ms-auto">
+                    <!-- dark mode -->
+                    <button class="btn btn-link btn-square btnsunmoon btn-link-header" id="btn-layout-modes-dark-page">
+                        <i class="sun mx-auto" data-feather="sun"></i>
+                        <i class="moon mx-auto" data-feather="moon"></i>
+                    </button>
+
+                    <!-- profile dropdown -->
+                    <div class="dropdown d-inline-block">
+                        <a class="dropdown-toggle btn btn-link btn-square btn-link-header style-none no-caret px-0"
+                            id="userprofiledd" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                            <div class="row gx-0 d-inline-flex">
+                                <div class="col-auto align-self-center">
+                                    <figure class="avatar avatar-28 rounded-circle coverimg align-middle">
+                                        <img src="assets/img/modern-ai-image/user-6.jpg" alt=""
+                                            id="userphotoonboarding2">
+                                    </figure>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end width-300 pt-0 px-0"
+                            aria-labelledby="userprofiledd">
+                            <div class="bg-theme-1-space rounded py-3 mb-3 dropdown-dontclose">
+                                <div class="row gx-0">
+                                    <div class="col-auto px-3">
+                                        <figure class="avatar avatar-50 rounded-circle coverimg align-middle">
+                                            <img src="assets/img/modern-ai-image/user-6.jpg" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="col align-self-center ">
+                                        <p class="mb-1"><span>AdminUIUX</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <div>
+                                    <a class="dropdown-item theme-red" href="investment-login.html">
+                                        <i data-feather="power" class="avatar avatar-18 me-1"></i> Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="adminuiux-wrap">
+        <!-- Standard sidebar -->
+        <div class="adminuiux-sidebar">
+            <div class="adminuiux-sidebar-inner">
+                <!-- Profile -->
+                <div class="px-3 not-iconic mt-2">
+                    <div class="row gx-3">
+                        <div class="col align-self-center ">
+                            <h6 class="fw-medium">Menu principal</h6>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-link btn-square" data-bs-toggle="collapse"
+                                data-bs-target="#usersidebarprofile" aria-expanded="false" role="button"
+                                aria-controls="usersidebarprofile">
+                                <i data-feather="user"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center collapse " id="usersidebarprofile">
+                        <figure class="avatar avatar-100 rounded-circle coverimg my-3">
+                            <img src="assets/img/modern-ai-image/user-6.jpg" alt="">
+                        </figure>
+                        <h5 class="mb-1 fw-medium">AdminUIUX</h5>
+                    </div>
+                </div>
+
+                <ul class="nav flex-column menu-active-line">
+                    <!-- investment sidebar -->
+                    <li class="nav-item">
+                        <a href="investment-dashboard.html" class="nav-link">
+                            <i class="menu-icon bi bi-columns-gap"></i>
+                            <span class="menu-name">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="investment-wallet.html" class="nav-link">
+                            <i class="menu-icon bi bi-wallet"></i>
+                            <span class="menu-name">Wallet</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class=" mt-auto "></div>
+                <!-- User account -->
+                <ul class="nav flex-column menu-active-line">
+                    <li class="nav-item">
+                        <a href="investment-settings.html" class="nav-link">
+                            <i class="menu-icon" data-feather="settings"></i>
+                            <span class="menu-name">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         @yield('content')
-        <!--end page wrapper -->
-        <!--start overlay-->
-        <div class="overlay toggle-icon"></div>
-        <!--end overlay-->
-        <!--Start Back To Top Button-->
-        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-        <!--End Back To Top Button-->
-        <footer class="page-footer">
-            <p class="mb-0">Copyright © 2022. All right reserved.</p>
-        </footer>
     </div>
-    <!--end wrapper-->
-
-
-
-
-    <!--start switcher-->
-    <div class="switcher-wrapper">
-        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-        </div>
-        <div class="switcher-body">
-            <div class="d-flex align-items-center">
-                <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
-                <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
-            </div>
-            <hr />
-            <h6 class="mb-0">Theme Styles</h6>
-            <hr />
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked>
-                    <label class="form-check-label" for="lightmode">Light</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
-                    <label class="form-check-label" for="darkmode">Dark</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
-                    <label class="form-check-label" for="semidark">Semi Dark</label>
-                </div>
-            </div>
-            <hr />
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
-                <label class="form-check-label" for="minimaltheme">Minimal Theme</label>
-            </div>
-            <hr />
-            <h6 class="mb-0">Header Colors</h6>
-            <hr />
-            <div class="header-colors-indigators">
-                <div class="row row-cols-auto g-3">
-                    <div class="col">
-                        <div class="indigator headercolor1" id="headercolor1"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor2" id="headercolor2"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor3" id="headercolor3"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor4" id="headercolor4"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor5" id="headercolor5"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor6" id="headercolor6"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor7" id="headercolor7"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator headercolor8" id="headercolor8"></div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <h6 class="mb-0">Sidebar Colors</h6>
-            <hr />
-            <div class="header-colors-indigators">
-                <div class="row row-cols-auto g-3">
-                    <div class="col">
-                        <div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
-                    </div>
-                    <div class="col">
-                        <div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end switcher-->
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--plugins-->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('assets/plugins/chartjs/js/chart.js') }}"></script>
-    <script src="{{ asset('assets/js/index.js') }}"></script>
-    <!--app JS-->
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script>
-        new PerfectScrollbar(".app-container")
-    </script>
+    <script src="{{ asset('assets/js/investment/investment-auth.js') }}"></script>
+    <!-- Page Level js -->
+    <script src="{{ asset('assets/js/investment/investment-dashboard.js') }}"></script>
 </body>
-
-<script>
-    'undefined' === typeof _trfq || (window._trfq = []);
-    'undefined' === typeof _trfd && (window._trfd = []), _trfd.push({
-        'tccl.baseHost': 'secureserver.net'
-    }, {
-        'ap': 'cpsh-oh'
-    }, {
-        'server': 'p3plzcpnl509132'
-    }, {
-        'dcenter': 'p3'
-    }, {
-        'cp_id': '10399385'
-    }, {
-        'cp_cl': '8'
-    }) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
-</script>
-<script src='../../../../img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'></script>
-<!-- Mirrored from codervent.com/rocker/demo/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Jul 2025 22:54:02 GMT -->
 
 </html>

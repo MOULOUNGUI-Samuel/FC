@@ -3,191 +3,166 @@
 @section('title', 'Liste des clients')
 
 @section('content')
-    <style>
-        /* Avatar gris circulaire */
-        .avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #e9ecef;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #adb5bd;
-            font-size: 1.25rem;
-            flex: 0 0 44px;
-        }
 
-        /* Ligne active (sélection) */
-        .item-active {
-            background: #d8ecff;
-        }
+    <main class="adminuiux-content has-sidebar" onclick="contentClick()">
 
-        /* bleu clair */
-        .list-item {
-            border: 1px solid #e5e7eb;
-        }
-
-        .list-item+.list-item {
-            border-top: none;
-        }
-
-        /* joints propres */
-        .name {
-            font-weight: 700;
-            letter-spacing: .3px;
-            color: #2d2d2d;
-        }
-
-        .role {
-            color: #8f9aa3;
-            font-size: .85rem;
-            margin-top: .15rem;
-        }
-
-        .actions .btn {
-            --bs-btn-padding-y: .35rem;
-            --bs-btn-padding-x: .5rem;
-        }
-
-        .badge-comptes {
-            background: #0d34a6;
-            /* bleu foncé proche de la capture */
-            border-radius: 999px;
-            padding: .35rem .7rem;
-            font-weight: 700;
-        }
-
-        .dropdown-toggle-soft {
-            background: #eef2f6;
-            color: #7a8591;
-            border: 1px solid #e3e7eb;
-        }
-
-        /* Responsive : empile à <576px */
-        @media (max-width: 575.98px) {
-            .stack-sm {
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: .5rem;
-            }
-
-            .actions {
-                width: 100%;
-                display: flex;
-                gap: .5rem;
-                justify-content: flex-start;
-            }
-        }
-    </style>
-    <div class="page-wrapper">
-        <div class="page-content">
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">Liste des clients</div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">Clients</li>
-                        </ol>
-                    </nav>
+        <!-- Content  -->
+        <div class="container mt-3" id="main-content">
+            <div class="row gx-3 align-items-center">
+                <div class="col-12 col-lg mb-3">
+                    <h3 class="fw-normal mb-0 text-secondary">Liste des clients</h3>
                 </div>
-                <div class="ms-auto">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Settings</button>
-                        <button type="button"
-                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                                href="javascript:;">Action</a>
-                            <a class="dropdown-item" href="javascript:;">Another action</a>
-                            <a class="dropdown-item" href="javascript:;">Something else here</a>
-                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                                link</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="row">
-                <div class="col"></div>
-                <div class="col-md-8">
-                    <div class="list-group">
-
-                        <!-- Item 2 -->
-                        <div class="list-group-item list-item bg-white">
-                            <div class="d-flex align-items-center justify-content-between stack-sm gap-3">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="avatar">
-                                        <i class="bi bi-person-fill"></i>
-                                    </div>
-                                    <div>
-                                        <div class="name text-uppercase">MOULOUNGUI BIENVENUE SAMARA</div>
-                                        <div class="role">INFORMATICIEN</div>
+                <div class="col-12">
+                    <div class="card adminuiux-card mb-3">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs adminuiux-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home-tab-pane" type="button" role="tab"
+                                        aria-controls="home-tab-pane" aria-selected="true">Particulier</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#profile-tab-pane" type="button" role="tab"
+                                        aria-controls="profile-tab-pane" aria-selected="false">Fonds /Entitées</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="col-12 col-md-11 col-xxl-8 mb-3 mt-3">
+                                    <div class="input-group">
+                                        <input class="form-control border-end-0" type="text"
+                                            placeholder="Search investment plans">
+                                        <button class="btn btn-lg btn-theme btn-square"><i
+                                                class="bi bi-search"></i></button>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center gap-2 actions">
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-soft" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Membres associés
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Voir les membres</a></li>
-                                            <li><a class="dropdown-item" href="#">Ajouter un membre</a></li>
-                                        </ul>
+                                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                                    aria-labelledby="home-tab" tabindex="0">
+                                    <br>
+                                    <p class="h5">Particulier</p>
+
+                                    <div class="card-body">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="all">Photo</th>
+                                                    <th class="all">Nom</th>
+                                                    <th class="xs">Profession</th>
+                                                    <th class="xs sm">Comptes</th>
+                                                    <th class="xs sm">Membres associés</th>
+                                                    <th class="xs sm">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <p class="mb-0">Jintudal</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">MOULOUNGUI BIENVENUE SAMARA</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">Informaticien</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-success"><i class="bi bi-graph-up-arrow"></i> 3
+                                                            comptes</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown d-inline-block">
+                                                            <a class="btn btn-link btn-square no-caret"
+                                                                data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots">membres</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                <li><a class="dropdown-item" href="javascript:void(0)">Voir
+                                                                        les membres</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="javascript:void(0)">Ajouter un membre</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-success">Modifier</button>
+                                                        <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <span class="badge badge-comptes">2 Comptes</span>
-                                    <button class="btn btn-outline-secondary btn-sm" title="Éditer">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-outline-secondary btn-sm" title="Supprimer">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                </div>
+                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
+                                    aria-labelledby="profile-tab" tabindex="0">
+                                    <br>
+                                    <p class="h5">Fonds /Entitées</p>
+                                    <div class="card-body">
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="all">Photo</th>
+                                                    <th class="all">Nom</th>
+                                                    <th class="xs">Profession</th>
+                                                    <th class="xs sm">Comptes</th>
+                                                    <th class="xs sm">Membres associés</th>
+                                                    <th class="xs sm">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <p class="mb-0">Jintudal</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">MOULOUNGUI BIENVENUE SAMARA</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0">Informaticien</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="mb-0 text-success"><i class="bi bi-graph-up-arrow"></i> 3
+                                                            comptes</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown d-inline-block">
+                                                            <a class="btn btn-link btn-square no-caret"
+                                                                data-bs-toggle="dropdown">
+                                                                <i class="bi bi-three-dots">membres</i>
+                                                            </a>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                <li><a class="dropdown-item" href="javascript:void(0)">Voir
+                                                                        les membres</a>
+                                                                </li>
+                                                                <li><a class="dropdown-item"
+                                                                        href="javascript:void(0)">Ajouter un membre</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-success">Modifier</button>
+                                                        <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    x
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Item 3 -->
-                        <div class="list-group-item list-item bg-white">
-                            <div class="d-flex align-items-center justify-content-between stack-sm gap-3">
-                                <div class="d-flex align-items-center gap-3">
-                                    <div class="avatar">
-                                        <i class="bi bi-person-fill"></i>
-                                    </div>
-                                    <div>
-                                        <div class="name text-uppercase">NDOULY Bienvenue</div>
-                                        <div class="role">Chauffeur</div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center gap-2 actions">
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm dropdown-toggle dropdown-toggle-soft" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Membres associés
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Voir les membres</a></li>
-                                            <li><a class="dropdown-item" href="#">Ajouter un membre</a></li>
-                                        </ul>
-                                    </div>
-                                    <span class="badge badge-comptes">1 Compte</span>
-                                    <button class="btn btn-outline-secondary btn-sm" title="Éditer">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-outline-secondary btn-sm" title="Supprimer">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-                <div class="col"></div>
-            </div>
 
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 @endsection

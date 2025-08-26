@@ -27,6 +27,7 @@
 
     <script defer src="{{ asset('assets/js/appced1.js?7e4316178ad989670ad8') }}"></script>
     <link href="{{ asset('assets/css/appced1.css?7e4316178ad989670ad8') }}" rel="stylesheet">
+    
 </head>
 
 <body
@@ -144,16 +145,16 @@
 
                 <ul class="nav flex-column menu-active-line">
                     <!-- investment sidebar -->
-                    <li class="nav-item">
-                        <a href="investment-dashboard.html" class="nav-link">
-                            <i class="menu-icon bi bi-columns-gap"></i>
-                            <span class="menu-name">Dashboard</span>
+                    <li class="nav-item mb-3">
+                        <a href="{{('dashboard')}}" class="nav-link">
+                          <i class="menu-icon" data-feather="home"></i>
+                            <span class="menu-name">Tableau de bord</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="investment-wallet.html" class="nav-link">
-                            <i class="menu-icon bi bi-wallet"></i>
-                            <span class="menu-name">Wallet</span>
+                        <a href="{{route('client.index')}}" class="nav-link">
+                            <i class="menu-icon" data-feather="users"></i>
+                            <span class="menu-name">Client</span>
                         </a>
                     </li>
                 </ul>

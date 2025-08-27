@@ -16,7 +16,7 @@ class User extends Authenticatable
         HasFactory,
         Notifiable,
         HasUuids;
-
+    protected $keyType = 'string';
     /**
      * The attributes that are mass assignable.
      *
@@ -67,7 +67,12 @@ class User extends Authenticatable
         'date_naissance' => 'date',
         'est_actif' => 'boolean',
     ];
-
+    protected static function booted()
+    {
+        static::creating(function ($m) {
+            if (!$m->getKey()) $m->{$m->getKeyName()} = (string) \Illuminate\Support\Str::uuid();
+        });
+    }
 
     /**
      * Get the user's role.
@@ -75,5 +80,10 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+    // app/Models/User.php
+    public function accounts()
+    {
+        return $this->hasMany(\App\Models\Account::class);
     }
 }

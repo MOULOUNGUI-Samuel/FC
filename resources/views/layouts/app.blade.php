@@ -27,7 +27,7 @@
 
     <script defer src="{{ asset('assets/js/appced1.js?7e4316178ad989670ad8') }}"></script>
     <link href="{{ asset('assets/css/appced1.css?7e4316178ad989670ad8') }}" rel="stylesheet">
-    
+    @livewireStyles
 </head>
 
 <body
@@ -146,13 +146,13 @@
                 <ul class="nav flex-column menu-active-line">
                     <!-- investment sidebar -->
                     <li class="nav-item mb-3">
-                        <a href="{{('dashboard')}}" class="nav-link">
+                        <a href="{{('dashboard')}}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                           <i class="menu-icon" data-feather="home"></i>
                             <span class="menu-name">Tableau de bord</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('client.index')}}" class="nav-link">
+                        <a href="{{route('liste.index')}}" class="nav-link {{ request()->routeIs('liste.index','liste.index1') ? 'active' : '' }}">
                             <i class="menu-icon" data-feather="users"></i>
                             <span class="menu-name">Client</span>
                         </a>
@@ -170,8 +170,18 @@
                 </ul>
             </div>
         </div>
+        {{-- Container toast Bootstrap (une seule fois dans la page/layout) --}}
+<div class="position-fixed top-0 end-0 p-3" style="z-index:1080" wire:ignore>
+  <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="liveToastBody">Action réussie.</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
         @yield('content')
     </div>
+    @livewireScripts
     <script src="{{ asset('assets/js/investment/investment-auth.js') }}"></script>
     <!-- Page Level js -->
     <script src="{{ asset('assets/js/investment/investment-dashboard.js') }}"></script>

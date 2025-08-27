@@ -46,6 +46,7 @@ return new class extends Migration
     
     // --- Relations ---
     $table->foreignUuid('role_id')->nullable()->constrained()->onDelete('set null');
+    $table->foreignUuid('pays_id')->nullable()->constrained()->onDelete('set null');
 
     $table->timestamps();
 });

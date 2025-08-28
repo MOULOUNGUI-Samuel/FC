@@ -48,24 +48,35 @@
                             </td>
                             <td>
                                 <p class="mb-0 text-success">
-                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <i class="menu-icon" data-feather="wallet"></i>
                                     {{ $c->accounts_count }} compte{{ $c->accounts_count > 1 ? 's' : '' }}
                                 </p>
                             </td>
                             <td>
-                                <div class="dropdown d-inline-block">
-                                    <a class="btn btn-link btn-square no-caret" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots">membres</i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="javascript:void(0)">Voir les membres</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0)">Ajouter un membre</a>
-                                        </li>
+                                <div class="dropdown dropstart d-inline-block me-2 mb-3">
+                                    <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        Membres associés
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">
+                                                <i class="menu-icon me-2" data-feather="eye"></i>
+                                                Voir les membres
+                                            </a></li>
+                                        <li><a class="dropdown-item" href="#">
+                                                <i class="menu-icon me-2" data-feather="plus"></i>
+                                                Ajouter un membre
+                                            </a></li>
                                     </ul>
                                 </div>
                             </td>
                             <td>
                                 <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-success"
+                                        wire:click="$dispatch('clients:open-accounts', { id: '{{ $c->id }}' })">
+                                        Compte du client
+                                    </button>
+
                                     <button class="btn btn-sm btn-outline-success"
                                         wire:click="$dispatch('open-edit-offcanvas', { id: '{{ $c->id }}' })">
                                         Modifier
@@ -85,6 +96,10 @@
                     @endforelse
                 </tbody>
             </table>
+            {{-- Place ce composant UNE FOIS par page (en bas) --}}
+            <livewire:clients.accounts-modal />
+
+
             {{-- Modal Bootstrap de confirmation --}}
             <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true" wire:ignore.self>
                 <div class="modal-dialog modal-dialog-centered">

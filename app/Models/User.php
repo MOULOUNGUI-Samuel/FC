@@ -33,7 +33,7 @@ class User extends Authenticatable
         'email',
         'numero_telephone',
         'numero_telephone_secondaire',
-        'pays',
+        'pays_id',
         'ville',
         'adresse',
         'numero_carte_identite',
@@ -85,5 +85,9 @@ class User extends Authenticatable
     public function accounts()
     {
         return $this->hasMany(\App\Models\Account::class);
+    }
+    public function pays()
+    {
+        return $this->belongsTo(Pays::class);
     }
 }

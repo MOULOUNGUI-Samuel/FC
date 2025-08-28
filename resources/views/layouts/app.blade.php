@@ -146,15 +146,38 @@
                 <ul class="nav flex-column menu-active-line">
                     <!-- investment sidebar -->
                     <li class="nav-item mb-3">
-                        <a href="{{('dashboard')}}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                          <i class="menu-icon" data-feather="home"></i>
+                        <a href="{{ 'dashboard' }}"
+                            class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                            <i class="menu-icon" data-feather="home"></i>
                             <span class="menu-name">Tableau de bord</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('liste.index')}}" class="nav-link {{ request()->routeIs('liste.index','liste.index1') ? 'active' : '' }}">
+                        <a href="{{ route('liste.index') }}"
+                            class="nav-link {{ request()->routeIs('liste.index', 'liste.index1') ? 'active' : '' }}">
                             <i class="menu-icon" data-feather="users"></i>
                             <span class="menu-name">Client</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                            class="nav-link">
+                            <i class="menu-icon" data-feather="dollar-sign"></i>
+                            <span class="menu-name">Tresorerie</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                            class="nav-link">
+                            <i class="menu-icon" data-feather="bar-chart-2"></i>
+                            <span class="menu-name">Synthese</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#"
+                            class="nav-link">
+                            <i class="menu-icon" data-feather="users"></i>
+                            <span class="menu-name">Utilisateurs</span>
                         </a>
                     </li>
                 </ul>
@@ -164,21 +187,25 @@
                     <li class="nav-item">
                         <a href="investment-settings.html" class="nav-link">
                             <i class="menu-icon" data-feather="settings"></i>
-                            <span class="menu-name">Settings</span>
+                            <span class="menu-name">
+                                Paramètres
+                            </span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         {{-- Container toast Bootstrap (une seule fois dans la page/layout) --}}
-<div class="position-fixed top-0 end-0 p-3" style="z-index:1080" wire:ignore>
-  <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body" id="liveToastBody">Action réussie.</div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-  </div>
-</div>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index:1080" wire:ignore>
+            <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert"
+                aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body" id="liveToastBody">Action réussie.</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
         @yield('content')
     </div>
     @livewireScripts

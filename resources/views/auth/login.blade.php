@@ -61,7 +61,7 @@
                     <div class="col-12 col-md-6 col-xl-8 p-4 d-none d-md-block">
                         <div class="card adminuiux-card bg-theme-1-space position-relative overflow-hidden h-100">
                             <div class="position-absolute start-0 top-0 h-100 w-100 coverimg  z-index-0">
-                                <img src="{{ asset('_assets/images/6196859.jpg') }}" alt="">
+                                <img src="{{ asset('_assets/images/6196859.png') }}" alt="">
                             </div>
                             {{-- <div class="card-body position-relative z-index-1">
                                 <div

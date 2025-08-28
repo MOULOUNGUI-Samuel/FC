@@ -47,6 +47,14 @@ class OffcanvasCreate extends Component
         $this->selectType($type);
         $this->dispatch('ui:show-offcanvas', id: 'particulier');
     }
+    protected function genNumeroCompte(): string
+    {
+        // Exemple de génération : AC + date + 6 chiffres aléatoires
+        return 'AC'
+            . date('ymd')
+            . substr((string) mt_rand(100000, 999999), 0, 6);
+    }
+
     protected function resetForm(): void
     {
         $this->editingId = null;

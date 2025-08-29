@@ -11,6 +11,6 @@ class ClientController extends Controller
         return view('components.clients.liste_particulier');
     }
     public function index1(){
-        return view('components.clients.liste_fondentite');
+        return view('components.clients.liste_associer');
     }
 }

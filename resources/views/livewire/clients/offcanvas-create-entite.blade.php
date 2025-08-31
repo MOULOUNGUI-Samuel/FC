@@ -10,7 +10,6 @@
     <div class="offcanvas-body">
         <div class="card-body">
             <div wire:key="form-entite">
-                <p class="h5">Informations du fonds / de l'entité</p>
                 <form class="row g-3 needs-validation" novalidate wire:submit.prevent="save"> {{-- Removed was-validated --}}
                     @include('components.clients._ajouterassocier')
 

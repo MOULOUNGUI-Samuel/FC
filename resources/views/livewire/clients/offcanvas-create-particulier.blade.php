@@ -10,8 +10,6 @@
   <div class="offcanvas-body">
     <div class="card-body">
         <div wire:key="form-particulier">
-          {{-- Le titre "Est une personne morale" est ici incohérent pour un Particulier (personne physique). Vous voudrez peut-être le changer. --}}
-          <p class="h5">Informations du particulier</p> 
           <form class="row g-3 needs-validation" novalidate wire:submit.prevent="save"> {{-- Removed was-validated --}}
             @include('components.clients._ajouterParticulier')
 

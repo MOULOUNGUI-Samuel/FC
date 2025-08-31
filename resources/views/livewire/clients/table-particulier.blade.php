@@ -1,12 +1,25 @@
 <div>
-    {{-- Recherche --}}
-    <div class="col-12 col-md-11 col-xxl-8 mb-3 mt-3">
-        <div class="input-group">
-            <input class="form-control border-end-0" type="text" placeholder="Rechercher…"
-                wire:model.debounce.400ms="search">
-            <button class="btn btn-lg btn-theme btn-square" type="button">
-                <i class="bi bi-search"></i>
-            </button>
+    <div class="row mb-3 mt-3">
+        <div class="col-8">
+            <div class="input-group">
+                <input class="form-control border-end-0" type="text" placeholder="Rechercher…"
+                    wire:model.debounce.400ms="search">
+                <button class="btn btn-lg btn-theme btn-square" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+            <div class="text-right">
+                <button class="btn btn-theme" wire:click="$dispatch('open-create-offcanvas-particulier')"
+                    data-bs-toggle="offcanvas" href="#offcanvasParticulier" role="button"
+                    aria-controls="offcanvasParticulier">
+                    <i class="bx bx-plus me-0 me-md-1"></i>
+                    <span class="d-none d-md-inline-block">Nouveau</span>
+                </button>
+            </div>
         </div>
     </div>
 

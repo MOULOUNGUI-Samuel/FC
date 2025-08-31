@@ -12,7 +12,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table w-100 nowrap align-middle mb-0" id="dataTable">
+            <table class="table w-100 nowrap align-middle mb-0" id="{{ count($clients) > 0 ? 'dataTable' : '' }}">
                 <thead>
                     <tr>
                         <th class="all">Nom</th>

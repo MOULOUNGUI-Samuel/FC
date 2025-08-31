@@ -7,7 +7,7 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Table extends Component
+class TableParticulier extends Component
 {
     use WithPagination;
 
@@ -75,6 +75,6 @@ class Table extends Component
 
         $clients = $query->paginate(10);
 
-        return view('livewire.clients.table', compact('clients'));
+        return view('livewire.clients.table-particulier', compact('clients'));
     }
 }

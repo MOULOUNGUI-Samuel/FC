@@ -152,12 +152,25 @@
                             <span class="menu-name">Tableau de bord</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('liste.index') }}"
-                            class="nav-link {{ request()->routeIs('liste.index', 'liste.index1') ? 'active' : '' }}">
+                    <li class="nav-item dropdown">
+                        <a href="javascrit:void(0)" class="nav-link dropdown-toggle  {{ request()->routeIs('liste.associer', 'liste.particulier') ? 'active' : '' }}" data-bs-toggle="dropdown">
                             <i class="menu-icon" data-feather="users"></i>
-                            <span class="menu-name">Client</span>
+                            <span class="menu-name">Clients</span>
                         </a>
+                        <div class="dropdown-menu">
+                            <div class="nav-item">
+                                <a href="{{ route('liste.particulier') }}" class="nav-link mb-3 {{ request()->routeIs('liste.particulier') ? 'active' : '' }}">
+                                    <i class="menu-icon" data-feather="user"></i>
+                                    <span class="menu-name">Particulier</span>
+                                </a>
+                            </div>
+                            <div class="nav-item">
+                                <a href="{{ route('liste.associer') }}" class="nav-link mb-3 {{ request()->routeIs( 'liste.associer') ? 'active' : '' }}">
+                                    <i class="menu-icon" data-feather="user"></i>
+                                    <span class="menu-name">Fonds / Entitees</span>
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="#"

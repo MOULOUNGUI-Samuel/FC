@@ -5,7 +5,7 @@
   <div class="container mt-3" id="main-content">
     <div class="row gx-3 align-items-center">
       <div class="col-6 col-lg mb-3">
-        <h3 class="fw-normal mb-0 text-secondary">Liste des clients (Particuliers)</h3>
+        <h3 class="fw-normal mb-0 text-secondary">Liste des particuliers</h3>
       </div>
       <div class="col-5"></div>
       <div class="col-1">
@@ -22,17 +22,9 @@
 
     <div class="card adminuiux-card mb-3">
       <div class="card-body">
-        <ul class="nav nav-tabs adminuiux-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active">Particulier</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <a href="{{ route('liste.index1') }}" class="nav-link">Fonds /Entitées</a>
-          </li>
-        </ul>
 
         {{-- TABLE LIVEWIRE : type = Client --}}
-        <livewire:clients.table type="Client" />
+        <livewire:clients.table-particulier type="Client" />
       </div>
     </div>
   </div>

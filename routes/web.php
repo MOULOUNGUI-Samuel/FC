@@ -11,9 +11,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/particulier', [ClientController::class, 'index'])->name('liste.index');
-    Route::get('/fondEntitee', [ClientController::class, 'index1'])->name('liste.index1');
-    
+    Route::get('/particulier', [ClientController::class, 'index'])->name('liste.particulier');
+    Route::get('/fondEntitee', [ClientController::class, 'index1'])->name('liste.associer');
 });
 
 require __DIR__ . '/auth.php';

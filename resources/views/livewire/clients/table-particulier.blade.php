@@ -12,7 +12,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table w-100 nowrap align-middle mb-0">
+            <table class="table w-100 nowrap align-middle mb-0" id="dataTable">
                 <thead>
                     <tr>
                         <th class="all">Nom</th>
@@ -78,7 +78,7 @@
                                     </button>
 
                                     <button class="btn btn-sm btn-outline-success"
-                                        wire:click="$dispatch('open-edit-offcanvas', { id: '{{ $c->id }}' })">
+                                        wire:click="$dispatch('open-edit-offcanvas-particulier', { id: '{{ $c->id }}' })">
                                         Modifier
                                     </button>
 

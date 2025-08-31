@@ -79,6 +79,7 @@ class AccountsModal extends Component
             $this->dispatch('notify', type:'success', text:'Compte supprimé.');
         }
         $this->pendingDeleteAccountId = null;
+        $this->dispatch('clients:refresh');
         $this->refreshData();
     }
 
@@ -186,6 +187,7 @@ public function saveNewAccount(): void
     $this->dispatch('modal:hide', id:'createAccountModal');
 
     $this->creating = false;
+    $this->dispatch('clients:refresh');
     $this->refreshData();
 }
 
